@@ -27,4 +27,6 @@ virtualenv env
 
 ### Troubleshooting
 
-If your socket server immediately returns, please verify that the `websockets` python module is being imported.
+* If your socket server immediately returns, please verify that the `websockets` python module is being imported.
+
+* If you see the error `Error during WebSocket handshake: net::ERR_CONNECTION_RESET`, please verify that your socket server is running.

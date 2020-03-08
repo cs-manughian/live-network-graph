@@ -9,10 +9,6 @@ export var socket = (function () {
                 websocket.send('Sending package from client...');
             };
 
-            websocket.onmessage = function(event) {
-                console.log('Got reply: ', event.data);
-            };
-
             websocket.onclose = function() {
                 console.log('Socket client closed...');
             };
@@ -20,6 +16,8 @@ export var socket = (function () {
             window.onbeforeunload = function() {
                 websocket.close();
             }
+
+            return websocket;
         }
     };
 }) ();
