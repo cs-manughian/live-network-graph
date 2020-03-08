@@ -18,6 +18,10 @@ import { socket } from './modules/socket_client.js';
         root.appendChild(
             graph.init(data)
         );
+
+        // TODO: 
+        // Trigger update graph functions based on reply without 
+        // re-creating entire DOM element
     };
 
 }) ();
