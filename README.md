@@ -1,6 +1,8 @@
 # Live Network Graph
 
-Generate a live network graph representing process interaction using d3.js and web sockets
+The intention of this project is to generate a live network graph representing process interaction using d3.js and web sockets.
+
+Current status: Rendering bar graph based on static websocket replies (step to verify socket communication).
 
 ## Setup
 
