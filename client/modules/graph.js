@@ -1,25 +1,31 @@
 
 export var graph = (function () {
     return {
-        init: function(data) {
+        init: function(container, data) {
 
-            // const data = [4, 8, 15, 16, 23, 42];
+                // Create a network
+                
+                var options = {
+                  nodes: {
+                    shape: "dot",
+                    size: 16
+                  },
+                  physics: {
+                    forceAtlas2Based: {
+                      gravitationalConstant: -26,
+                      centralGravity: 0.005,
+                      springLength: 230,
+                      springConstant: 0.18
+                    },
+                    maxVelocity: 146,
+                    solver: "forceAtlas2Based",
+                    timestep: 0.35,
+                    stabilization: { iterations: 150 }
+                  }
+                };
 
-            const div = d3.create('div')
-                .style('font', '10px sans-serif')
-                .style('text-align', 'right')
-                .style('color', 'white');
-      
-            div.selectAll('div')
-                .data(data)
-                .join('div')
-                    .style('background', 'steelblue')
-                    .style('padding', '3px')
-                    .style('margin', '1px')
-                    .style('width', d => `${d * 10}px`)
-                    .text(d => d);
-        
-            return div.node();
+                const network = new vis.Network(container, data, options);
+                return network;
         }
     }
 }) ();

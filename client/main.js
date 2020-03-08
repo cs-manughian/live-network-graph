@@ -12,12 +12,7 @@ import { socket } from './modules/socket_client.js';
         const data = JSON.parse(event.data);
         console.log('Got reply: ', data);
 
-        // Erase previous render
-        // root.innerHTML = '';
-
-        root.appendChild(
-            graph.init(data)
-        );
+        graph.init(root, data);
 
         // TODO: 
         // Trigger update graph functions based on reply without 
