@@ -3,18 +3,32 @@
 import asyncio
 import websockets
 import json
+import time
 
 async def reply(websocket, path):
-    data_points = [
-        [4, 8, 15, 16, 23, 42],
-        [1, 2, 3, 16, 23, 42],
-        [4, 6, 18, 9, 3, 12]
-    ]
+    graph_json = {
+        "nodes": [
+            {
+                "id": "Cosima",
+                "group": 4
+            }
+        ],
+        "links": [
+            # {
+            #     "source": "Mme.Burgon",
+            #     "target": "Cosima",
+            #     "value": 1
+            # }
+        ]
+    }
     
-    for point in data_points:
-        await websocket.send(json.dumps(point))
+    # Wait a bit and then update the data
+    time.sleep(2)
+    
+    await websocket.send(json.dumps(graph_json))
+    
 
 asyncio.get_event_loop().run_until_complete(
-    websockets.serve(reply, 'localhost', 8001))
+    websockets.serve(reply, "localhost", 8001))
 
 asyncio.get_event_loop().run_forever()
